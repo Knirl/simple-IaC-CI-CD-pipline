@@ -7,7 +7,7 @@ env:
 phases:
   install:
     commands:
-      - echo "--- Phase 1: Installing Terraform CLI ---"
+      - echo '--- Phase 1: Installing Terraform CLI ---'
       - wget https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip
       - unzip terraform_${TF_VERSION}_linux_amd64.zip
       - mv terraform /usr/local/bin/
@@ -15,14 +15,14 @@ phases:
 
   pre_build:
     commands:
-      - echo "--- Phase 2: Validating Code ---"
+      - echo '--- Phase 2: Validating Code ---'
       - terraform init -input=false
       - terraform fmt -check
       - terraform validate
 
   build:
     commands:
-      - echo "--- Phase 3: Generating Terraform Plan ---"
+      - echo '--- Phase 3: Generating Terraform Plan ---w'
       - terraform plan -var-file="terraform.tfvars" -input=false -out=tfplan
 
 artifacts:
