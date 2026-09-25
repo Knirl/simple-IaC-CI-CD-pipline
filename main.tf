@@ -31,6 +31,5 @@ module "compute" {
   subnet_id         = module.vpc.public_subnet_id
   security_group_id = module.security.web_security_group_id
   instance_type     = var.instance_type
-  ami_id            = var.ami_id
   environment       = var.environment
 }
