@@ -23,7 +23,3 @@ variable "public_subnet_cidr" {
 variable "instance_type" {
   type = string
 }
-
-variable "ami_id" {
-  type = string
-}

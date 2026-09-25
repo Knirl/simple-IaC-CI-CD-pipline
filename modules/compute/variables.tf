@@ -20,11 +20,6 @@ variable "instance_type" {
   description = "EC2 Instance size"
 }
 
-variable "ami_id" {
-  type        = string
-  description = "AMI ID for the Linux distribution"
-}
-
 variable "environment" {
   type        = string
   description = "Environment name"
