@@ -1,0 +1,32 @@
+version: 0.2
+
+env:
+  variables:
+    TF_VERSION: "1.9.0"
+
+phases:
+  install:
+    commands:
+      - echo "--- Phase 1: Installing Terraform CLI ---"
+      - wget https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip
+      - unzip terraform_${TF_VERSION}_linux_amd64.zip
+      - mv terraform /usr/local/bin/
+      - terraform --version
+
+  pre_build:
+    commands:
+      - echo "--- Phase 2: Validating Code ---"
+      - terraform init -input=false
+      - terraform fmt -check
+      - terraform validate
+
+  build:
+    commands:
+      - echo "--- Phase 3: Generating Terraform Plan ---"
+      - terraform plan -var-file="terraform.tfvars" -input=false -out=tfplan
+
+artifacts:
+  files:
+    - tfplan
+    - .terraform/**/*
+    - "**/*"
