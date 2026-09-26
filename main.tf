@@ -34,11 +34,11 @@ module "compute" {
   environment       = var.environment
 }
 
-# Testing the Pipeline - Adding a new resource - S3 Bucket
-resource "aws_s3_bucket" "pipeline_test_bucket" {
-  bucket_prefix = "cicd-test-bucket-"
+# # Testing the Pipeline - Adding a new resource - S3 Bucket
+# resource "aws_s3_bucket" "pipeline_test_bucket" {
+#   bucket_prefix = "cicd-test-bucket-"
 
-  tags = {
-    ManagedBy = "Terraform-CodePipeline"
-  }
-}
+#   tags = {
+#     ManagedBy = "Terraform-CodePipeline"
+#   }
+# }
